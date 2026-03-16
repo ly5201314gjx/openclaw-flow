@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+execution-results/
+monitors/
+data/
+test-reports/
+demo-config/
+e2e-results/
+reports/
+workflows/
+
+# Sensitive data
+.env
+*.key
+*.pem
+config.json
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp files
+*.log
+tmp/
+temp/
+
+# Build artifacts
+dist/
+build/
+coverage/
+
+# Test artifacts
+*.test-results
+*.coverage
+
+# Package files
+package-lock.json
+yarn.lock
+
+# Local backups
+*.bak
+*.backup
+
+# Generated documentation
+docs/_build/
+
+# System specific
+.openssh/
+.vagrant/
+composer.lock
+
+# OpenClaw specific
+auth-profiles.json
+agent-state.json

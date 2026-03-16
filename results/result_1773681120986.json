@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "workflowId": "wf_1773681120880_工作流:_完成用户请求的任务",
+  "duration": 106,
+  "results": {
+    "node_0": {
+      "success": true,
+      "data": {
+        "symbol": "BTCUSDT",
+        "price": 12.34,
+        "change_percent": -2.5,
+        "timestamp": "2026-03-16T17:12:00.882Z"
+      },
+      "nodeId": "node_0",
+      "timestamp": "2026-03-16T17:12:00.883Z"
+    }
+  },
+  "errors": [],
+  "state": {
+    "workflowId": "wf_1773681120880_工作流:_完成用户请求的任务",
+    "status": "completed",
+    "startTime": "2026-03-16T17:12:00.880Z",
+    "endTime": "2026-03-16T17:12:00.986Z",
+    "currentNode": "node_2",
+    "results": {},
+    "errors": []
+  }
+}

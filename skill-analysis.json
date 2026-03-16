@@ -1,0 +1,310 @@
+{
+  "totalSkills": 225,
+  "analyzedSkills": 28,
+  "capabilityStats": {
+    "data-fetch": 13,
+    "file-operation": 16,
+    "system-command": 24,
+    "communication": 11,
+    "monitoring": 13,
+    "integration": 11,
+    "coding": 15,
+    "automation": 13,
+    "analysis": 6,
+    "trading": 2
+  },
+  "skills": [
+    {
+      "name": "agent-browser",
+      "description": "name: Agent Browser",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "通讯",
+        "监控",
+        "集成",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "agent-browser-cli",
+      "description": "name: agent-browser",
+      "capabilities": [
+        "数据获取",
+        "系统命令",
+        "自动化",
+        "通讯",
+        "监控",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "ai-ppt-generate",
+      "description": "name: ai-ppt-generate",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "集成"
+      ]
+    },
+    {
+      "name": "amcjt-lottery-pro",
+      "description": "name: amcjt-lottery-pro",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "监控",
+        "集成"
+      ]
+    },
+    {
+      "name": "android-apk-builder",
+      "description": "Android APK Builder 是一个专门用于自动化 Android 应用构建的技能。它可以帮助开发者快速构建、调试和发布 APK 文件，处理常见的编译错误，并提供构建优化建议。",
+      "capabilities": [
+        "系统命令",
+        "自动化",
+        "分析处理",
+        "监控",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "android-dev-records",
+      "description": "Android App 开发记录技能用于系统化记录和管理 Android 应用开发项目。每个应用项目拥有独立的分区，包含完整开发记录、技术栈、架构设计、进度跟踪和下一步规划。",
+      "capabilities": [
+        "文件操作",
+        "系统命令",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "ayeaye",
+      "description": "name: ayeaye",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "自动化",
+        "通讯",
+        "监控",
+        "集成",
+        "交易",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "binance-trading",
+      "description": "- V3.0 OR 叠加策略（V1或V2任一信号入场）",
+      "capabilities": [
+        "自动化",
+        "交易"
+      ]
+    },
+    {
+      "name": "calendar",
+      "description": "帮用户管理日程事件，支持添加、查看、删除日程。",
+      "capabilities": [
+        "自动化"
+      ]
+    },
+    {
+      "name": "capability-evolver",
+      "description": "name: capability-evolver",
+      "capabilities": [
+        "文件操作",
+        "系统命令",
+        "自动化",
+        "通讯",
+        "分析处理",
+        "监控",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "clawfeed",
+      "description": "AI-powered news digest tool. Automatically generates structured summaries (4H/daily/weekly/monthly) ",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "集成"
+      ]
+    },
+    {
+      "name": "clawfeed-full",
+      "description": "AI-powered news digest tool. Automatically generates structured summaries (4H/daily/weekly/monthly) ",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "集成"
+      ]
+    },
+    {
+      "name": "code",
+      "description": "version: 1.0.4",
+      "capabilities": [
+        "文件操作",
+        "系统命令",
+        "监控",
+        "集成",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "coding-pm",
+      "description": "name: coding-pm",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "通讯",
+        "分析处理",
+        "监控",
+        "集成",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "comm-security-monitor",
+      "description": "当检测到与 Telegram 或 QQ Bot 通信相关的任何活动时触发。",
+      "capabilities": [
+        "文件操作",
+        "自动化",
+        "通讯"
+      ]
+    },
+    {
+      "name": "costlens-local",
+      "description": "name: costlens-local",
+      "capabilities": [
+        "系统命令",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "cursor-tui",
+      "description": "name: cursor-tui",
+      "capabilities": [
+        "文件操作",
+        "系统命令",
+        "通讯",
+        "分析处理",
+        "监控",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "dive-into-llms",
+      "description": "name: dive-into-llms",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "分析处理",
+        "集成",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "duckduckgo-search",
+      "description": "name: duckduckgo-search",
+      "capabilities": [
+        "数据获取",
+        "系统命令"
+      ]
+    },
+    {
+      "name": "evolver",
+      "description": "name: capability-evolver",
+      "capabilities": [
+        "文件操作",
+        "系统命令",
+        "自动化",
+        "通讯",
+        "分析处理",
+        "监控",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "exa-search-rust",
+      "description": "name: exa-search",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "通讯",
+        "监控",
+        "集成",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "express-query",
+      "description": "查询快递物流信息、取件码，支持多家快递公司。",
+      "capabilities": [
+        "数据获取",
+        "自动化",
+        "集成",
+        "编程开发"
+      ]
+    },
+    {
+      "name": "feishu-evolver-wrapper",
+      "description": "name: feishu-evolver-wrapper",
+      "capabilities": [
+        "系统命令",
+        "自动化",
+        "通讯",
+        "监控"
+      ]
+    },
+    {
+      "name": "file-processor",
+      "description": "自动识别和处理用户发送的文件。",
+      "capabilities": [
+        "系统命令",
+        "自动化"
+      ]
+    },
+    {
+      "name": "gongkao-super",
+      "description": "name: gongkao-super",
+      "capabilities": [
+        "系统命令"
+      ]
+    },
+    {
+      "name": "kekik-crawler",
+      "description": "name: kekik-crawler",
+      "capabilities": [
+        "数据获取",
+        "文件操作",
+        "系统命令",
+        "监控"
+      ]
+    },
+    {
+      "name": "lgcapture",
+      "description": "自动抓取抖音视频，支持短链接和标准链接。",
+      "capabilities": [
+        "系统命令",
+        "自动化"
+      ]
+    },
+    {
+      "name": "mtproto-proxy",
+      "description": "- **技能名称**: MTProto代理爬取技能",
+      "capabilities": [
+        "系统命令",
+        "自动化",
+        "通讯",
+        "编程开发"
+      ]
+    }
+  ]
+}
