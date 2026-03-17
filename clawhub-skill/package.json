@@ -1,0 +1,47 @@
+{
+  "name": "openclaw-flow",
+  "version": "0.1.0",
+  "description": "Your First Sentence, My Full Workflow. Turn natural language into complete OpenClaw automation.",
+  "main": "cli.js",
+  "bin": {
+    "openclaw-flow": "./cli.js"
+  },
+  "scripts": {
+    "test": "node test/simple.js",
+    "demo": "node cli.js demo",
+    "start": "node cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ly5201314gjx/openclaw-flow.git"
+  },
+  "keywords": [
+    "openclaw",
+    "flow",
+    "automation",
+    "workflow",
+    "natural-language",
+    "ai",
+    "productivity",
+    "cli"
+  ],
+  "author": "OpenClaw Flow Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ly5201314gjx/openclaw-flow/issues"
+  },
+  "homepage": "https://github.com/ly5201314gjx/openclaw-flow#readme",
+  "dependencies": {
+    "commander": "^11.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "openclaw": {
+    "skill": true,
+    "category": "automation",
+    "compatibility": ">=2026.2.0",
+    "icon": "🌊",
+    "entrypoint": "cli.js"
+  }
+}

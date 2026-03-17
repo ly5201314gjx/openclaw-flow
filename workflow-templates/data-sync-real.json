@@ -1,0 +1,129 @@
+{
+  "id": "data_sync_1773705045891",
+  "name": "跨平台数据自动同步系统",
+  "description": "在不同平台（GitHub、Notion、数据库、文件系统）间自动同步数据",
+  "schedule": "0 * * * *",
+  "sync_scenarios": [
+    "GitHub Issues ↔ Notion",
+    "数据库 ↔ 云存储",
+    "API数据 ↔ 本地文件",
+    "多个服务间的数据同步"
+  ],
+  "triggers": [
+    "每小时同步GitHub数据到Notion",
+    "数据库有更新时自动备份",
+    "不同服务间同步用户数据"
+  ],
+  "real_commands": [
+    "openclaw-flow process \"同步GitHub issues到Notion\"",
+    "openclaw-flow process \"每小时备份数据库\"",
+    "openclaw-flow process \"创建数据同步工作流\""
+  ],
+  "workflow_steps": [
+    {
+      "step": 1,
+      "action": "从GitHub获取数据",
+      "skill": "github-api",
+      "command": "github-api get_issues",
+      "params": {
+        "repo": "your/repository",
+        "state": "open",
+        "labels": [
+          "bug",
+          "enhancement"
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "action": "数据格式转换",
+      "skill": "data-processor",
+      "command": "data-processor transform",
+      "params": {
+        "input_format": "github_issues",
+        "output_format": "notion_pages",
+        "mapping": {
+          "title": "issue.title",
+          "status": "issue.state",
+          "assignee": "issue.assignee"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "action": "同步到Notion",
+      "skill": "notion-api",
+      "command": "notion-api create_pages",
+      "params": {
+        "database_id": "your-database-id",
+        "pages": "{{transformed_data}}"
+      }
+    },
+    {
+      "step": 4,
+      "action": "检查同步状态",
+      "skill": "sync-monitor",
+      "command": "sync-monitor check_status",
+      "params": {
+        "source": "github",
+        "target": "notion",
+        "timeout": 30
+      }
+    },
+    {
+      "step": 5,
+      "action": "处理同步冲突",
+      "condition": "has_conflicts",
+      "if_true": {
+        "action": "解决冲突",
+        "skill": "data-processor",
+        "params": {
+          "action": "resolve_conflicts",
+          "strategy": "keep_latest",
+          "log_conflicts": true
+        }
+      }
+    },
+    {
+      "step": 6,
+      "action": "记录同步日志",
+      "skill": "file-storage",
+      "command": "file-storage save sync_log",
+      "params": {
+        "path": "/logs/sync/{{date}}/sync_{{timestamp}}.json",
+        "content": "{{sync_details}}"
+      }
+    },
+    {
+      "step": 7,
+      "action": "发送同步报告",
+      "skill": "telegram-message",
+      "command": "telegram-message send \"数据同步报告\"",
+      "params": {
+        "message": "🔄 数据同步已完成!\n📊 同步记录: {{sync_count}}条\n⏱️  耗时: {{duration}}秒",
+        "to": "admin"
+      }
+    }
+  ],
+  "installation_requirements": [
+    "GitHub API: clawhub install github-api",
+    "数据转换: clawhub install data-processor",
+    "文件存储: clawhub install file-storage",
+    "通知: clawhub install telegram-message",
+    "Notion API: 需要额外配置"
+  ],
+  "sync_strategies": [
+    "增量同步 - 只同步变化的数据",
+    "全量同步 - 覆盖所有数据",
+    "双向同步 - 保持两端一致",
+    "条件同步 - 基于规则过滤"
+  ],
+  "quick_test": "openclaw-flow process \"测试数据同步\" --dry-run",
+  "benefits": [
+    "自动同步，减少人工操作",
+    "多平台支持，灵活集成",
+    "冲突解决，数据一致性",
+    "详细日志，便于排查",
+    "实时通知，随时掌握状态"
+  ]
+}

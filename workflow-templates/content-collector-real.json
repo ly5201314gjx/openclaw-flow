@@ -1,0 +1,125 @@
+{
+  "id": "content_collector_1773704811415",
+  "name": "多平台热点内容收集系统",
+  "description": "定时收集知乎、哔哩哔哩、微博等平台的热门内容，保存并分析",
+  "schedule": "0 9,12,18 * * *",
+  "platforms": [
+    "知乎",
+    "哔哩哔哩",
+    "微博",
+    "GitHub Trending",
+    "Twitter Trending"
+  ],
+  "triggers": [
+    "每天上午9点收集知乎和B站热榜",
+    "每小时收集一次热门内容",
+    "收集科技类热点话题并保存"
+  ],
+  "real_commands": [
+    "openclaw-flow process \"每天上午9点收集知乎热榜\"",
+    "openclaw-flow process \"收集B站热门视频\"",
+    "openclaw-flow process \"定时收集多平台热点内容\""
+  ],
+  "workflow_steps": [
+    {
+      "step": 1,
+      "action": "获取知乎热榜",
+      "skill": "zhihu-hot",
+      "command": "zhihu-hot get_hot_list",
+      "params": {
+        "limit": 20,
+        "category": "all"
+      },
+      "note": "需要安装zhihu-hot技能或使用web-fetch替代"
+    },
+    {
+      "step": 2,
+      "action": "获取B站热门榜",
+      "skill": "web-fetch",
+      "command": "web-fetch https://api.bilibili.com/x/web-interface/popular",
+      "params": {
+        "url": "https://api.bilibili.com/x/web-interface/popular",
+        "method": "GET",
+        "headers": {
+          "User-Agent": "Mozilla/5.0",
+          "Referer": "https://www.bilibili.com"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "action": "获取微博热搜",
+      "skill": "web-fetch",
+      "command": "web-fetch 微博API",
+      "params": {
+        "url": "https://weibo.com/ajax/side/hotSearch",
+        "method": "GET"
+      },
+      "note": "微博API可能需要登录，可使用备用方案"
+    },
+    {
+      "step": 4,
+      "action": "数据处理和去重",
+      "skill": "data-processor",
+      "command": "data-processor merge_and_deduplicate",
+      "params": {
+        "sources": [
+          "zhihu",
+          "bilibili",
+          "weibo"
+        ],
+        "output_format": "consolidated"
+      }
+    },
+    {
+      "step": 5,
+      "action": "保存到JSON文件",
+      "skill": "file-storage",
+      "command": "file-storage save hot_content.json",
+      "params": {
+        "path": "/data/hot-content/{{date}}/content_{{timestamp}}.json",
+        "content": "{{processed_data}}"
+      }
+    },
+    {
+      "step": 6,
+      "action": "生成每日报告",
+      "skill": "template-engine",
+      "command": "template-engine render daily_report",
+      "params": {
+        "template": "daily_hot_content_report.md",
+        "data": "{{processed_data}}"
+      }
+    },
+    {
+      "step": 7,
+      "action": "发送报告到Telegram",
+      "skill": "telegram-message",
+      "command": "telegram-message send \"📰 今日热点报告\"",
+      "params": {
+        "message": "📊 今日热点内容报告已生成！\n包含{{count}}条热门内容。",
+        "to": "user"
+      }
+    }
+  ],
+  "installation_requirements": [
+    "核心技能: clawhub install web-fetch",
+    "文件存储: clawhub install file-storage",
+    "通知: clawhub install telegram-message",
+    "数据处理: clawhub install data-processor (可选)"
+  ],
+  "alternative_apis": [
+    "知乎热榜: https://www.zhihu.com/hot",
+    "B站热门: https://api.bilibili.com/x/web-interface/popular",
+    "微博热搜: https://s.weibo.com/top/summary",
+    "GitHub Trending: https://github.com/trending"
+  ],
+  "quick_test": "openclaw-flow process \"获取知乎当前热榜\" --dry-run",
+  "benefits": [
+    "一站式收集多平台热点",
+    "智能去重和分类",
+    "定时自动执行",
+    "报告生成和推送",
+    "历史数据归档"
+  ]
+}

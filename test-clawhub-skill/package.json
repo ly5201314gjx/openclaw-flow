@@ -1,0 +1,6 @@
+{
+  "name": "test-openclaw-flow",
+  "version": "0.1.0",
+  "description": "Test skill",
+  "main": "index.js"
+}

@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-03-16T23:19:36.608Z",
+  "count": 10,
+  "topics": [
+    {
+      "rank": 1,
+      "title": "2026年AI Agent如何改变工作方式？",
+      "metrics": "156万热度",
+      "category": "科技",
+      "trend": "🔥 爆",
+      "description": "讨论AI助手在工作中的实际应用和效率提升"
+    },
+    {
+      "rank": 2,
+      "title": "大语言模型开源项目哪家强？",
+      "metrics": "128万热度",
+      "category": "技术",
+      "trend": "📈 升",
+      "description": "对比ChatGPT、Claude、DeepSeek等模型的优缺点"
+    },
+    {
+      "rank": 3,
+      "title": "个人开发者如何抓住AI时代机遇？",
+      "metrics": "115万热度",
+      "category": "创业",
+      "trend": "💼 新",
+      "description": "分享AI工具创业经验和案例"
+    },
+    {
+      "rank": 4,
+      "title": "Web3.0还有机会吗？",
+      "metrics": "98万热度",
+      "category": "区块链",
+      "trend": "🔄 稳",
+      "description": "探讨区块链技术的最新发展和应用场景"
+    },
+    {
+      "rank": 5,
+      "title": "远程工作效率提升技巧",
+      "metrics": "87万热度",
+      "category": "职场",
+      "trend": "🏠 热",
+      "description": "分享远程工作的最佳实践和工具推荐"
+    },
+    {
+      "rank": 6,
+      "title": "智能家居安全如何保障？",
+      "metrics": "76万热度",
+      "category": "生活",
+      "trend": "🔒 关",
+      "description": "讨论物联网设备的安全风险和防护措施"
+    },
+    {
+      "rank": 7,
+      "title": "新能源汽车技术突破",
+      "metrics": "65万热度",
+      "category": "汽车",
+      "trend": "⚡ 新",
+      "description": "分析电动汽车技术的最新进展"
+    },
+    {
+      "rank": 8,
+      "title": "元宇宙应用场景实践",
+      "metrics": "54万热度",
+      "category": "科技",
+      "trend": "🌐 探",
+      "description": "探索虚拟现实在工作、娱乐中的应用"
+    },
+    {
+      "rank": 9,
+      "title": "加密货币投资策略2026",
+      "metrics": "43万热度",
+      "category": "投资",
+      "trend": "📊 析",
+      "description": "分享数字资产的投资分析和风险管理"
+    },
+    {
+      "rank": 10,
+      "title": "内容创作AI工具大全",
+      "metrics": "32万热度",
+      "category": "创作",
+      "trend": "✍️ 推",
+      "description": "整理最新AI写作、绘画、视频工具"
+    }
+  ],
+  "summary": {
+    "totalTopics": 10,
+    "avgHeat": 85,
+    "topCategory": "科技",
+    "updateTime": "2026/3/17 07:19:36"
+  }
+}

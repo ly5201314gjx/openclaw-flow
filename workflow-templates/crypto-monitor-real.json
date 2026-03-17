@@ -1,0 +1,86 @@
+{
+  "id": "crypto_monitor_1773704811348",
+  "name": "加密货币价格监控系统",
+  "description": "监控BTC、ETH、WLD价格，超过阈值时通过Telegram通知",
+  "schedule": "*/15 * * * *",
+  "triggers": [
+    "监控BTC价格，超过$50000就通知我",
+    "监控ETH和WLD价格，跌10%就报警",
+    "每小时检查一次加密货币价格"
+  ],
+  "real_commands": [
+    "openclaw-flow process \"监控BTC价格，超过$50000就通知我\"",
+    "openclaw-flow process \"每15分钟检查一次加密货币价格\"",
+    "openclaw-flow process \"ETH价格跌10%就通过Telegram提醒\""
+  ],
+  "workflow_steps": [
+    {
+      "step": 1,
+      "action": "获取BTC价格",
+      "skill": "binance-trading",
+      "command": "binance-trading get_price BTCUSDT",
+      "params": {
+        "symbol": "BTCUSDT",
+        "interval": "1m"
+      }
+    },
+    {
+      "step": 2,
+      "action": "获取ETH价格",
+      "skill": "binance-trading",
+      "command": "binance-trading get_price ETHUSDT",
+      "params": {
+        "symbol": "ETHUSDT",
+        "interval": "1m"
+      }
+    },
+    {
+      "step": 3,
+      "action": "获取WLD价格",
+      "skill": "binance-trading",
+      "command": "binance-trading get_price WLDUSDT",
+      "params": {
+        "symbol": "WLDUSDT",
+        "interval": "1m"
+      }
+    },
+    {
+      "step": 4,
+      "action": "检查价格阈值",
+      "condition": "any price change > 5%",
+      "logic": "如果任一币种价格波动超过5%，触发通知"
+    },
+    {
+      "step": 5,
+      "action": "发送Telegram通知",
+      "skill": "telegram-message",
+      "command": "telegram-message send \"🚨 加密货币价格波动超过5%!\"",
+      "params": {
+        "message": "加密货币价格警报:\nBTC: {{btc_price}}\nETH: {{eth_price}}\nWLD: {{wld_price}}",
+        "to": "user"
+      }
+    },
+    {
+      "step": 6,
+      "action": "记录价格历史",
+      "skill": "file-storage",
+      "command": "file-storage save crypto_prices.json",
+      "params": {
+        "path": "/data/crypto/prices_{{timestamp}}.json",
+        "content": "{{all_prices_data}}"
+      }
+    }
+  ],
+  "installation_requirements": [
+    "安装binance-trading技能: clawhub install binance-trading",
+    "安装telegram-message技能: clawhub install telegram-message",
+    "安装file-storage技能: clawhub install file-storage"
+  ],
+  "quick_test": "openclaw-flow process \"检查BTC当前价格\" --dry-run",
+  "benefits": [
+    "实时监控多个加密货币价格",
+    "智能阈值警报",
+    "价格历史记录",
+    "多平台通知支持"
+  ]
+}

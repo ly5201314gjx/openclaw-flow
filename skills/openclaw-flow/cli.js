@@ -33,7 +33,7 @@ try {
 
 // Load package info
 const packageJson = require('./package.json');
-const { OpenClawCopilot, createCopilot } = require('./index');
+const { OpenClawFlow, createFlow } = require('./index');
 
 // Create CLI program
 const program = new commander.Command();
@@ -65,7 +65,7 @@ program
     
     console.log(`📝 Processing: "${text}"\n`);
     
-    const flow = createCopilot({
+    const flow = createFlow({
       dryRun: options.dryRun,
       verbose: options.verbose || false,
       autoConfirm: options.yes
@@ -123,7 +123,7 @@ program
     
     console.log(`📋 Processing ${requests.length} requests\n`);
     
-    const flow = createCopilot({
+    const flow = createFlow({
       dryRun: options.dryRun,
       autoConfirm: true
     });
@@ -178,7 +178,7 @@ program
       "Check BTC price every hour and send report"
     ];
     
-    const flow = createCopilot({ dryRun: true });
+    const flow = createFlow({ dryRun: true });
     
     for (let i = 0; i < demoRequests.length; i++) {
       console.log(`🔧 Example ${i + 1}: "${demoRequests[i]}"`);
@@ -206,7 +206,7 @@ program
   .action(() => {
     showBanner();
     
-    const flow = createCopilot();
+    const flow = createFlow();
     const status = flow.getStatus();
     
     console.log('📊 System Status\n');

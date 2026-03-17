@@ -1,0 +1,65 @@
+{
+  "name": "openclaw-flow",
+  "displayName": "OpenClaw Flow",
+  "version": "0.1.0",
+  "description": "Your First Sentence, My Full Workflow",
+  "author": "OpenClaw Flow Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ly5201314gjx/openclaw-flow.git"
+  },
+  "homepage": "https://github.com/ly5201314gjx/openclaw-flow",
+  "bugs": {
+    "url": "https://github.com/ly5201314gjx/openclaw-flow/issues"
+  },
+  "keywords": [
+    "openclaw",
+    "flow",
+    "automation",
+    "workflow",
+    "natural-language",
+    "ai",
+    "productivity"
+  ],
+  "categories": [
+    "automation",
+    "productivity",
+    "ai"
+  ],
+  "compatibility": {
+    "openclaw": ">=2026.2.0",
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "commander": "^11.0.0"
+  },
+  "files": [
+    "SKILL.md",
+    "package.json",
+    "cli.js",
+    "index.js",
+    "src/",
+    "test/",
+    "LICENSE",
+    "README.md",
+    "CONTRIBUTING.md",
+    "setup.sh"
+  ],
+  "scripts": {
+    "postinstall": "echo '🎉 OpenClaw Flow installed! Run: openclaw-flow demo'",
+    "test": "node test/simple.js"
+  },
+  "bin": {
+    "openclaw-flow": "./cli.js"
+  },
+  "icon": "🌊",
+  "tags": [
+    "openclaw",
+    "flow",
+    "automation",
+    "workflow",
+    "natural-language"
+  ],
+  "readme": "SKILL.md"
+}

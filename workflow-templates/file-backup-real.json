@@ -1,0 +1,117 @@
+{
+  "id": "file_backup_1773704811478",
+  "name": "智能文件备份系统",
+  "description": "定时备份重要目录，支持本地、云存储和多版本管理",
+  "schedule": "0 2 * * *",
+  "backup_targets": [
+    "~/workspace - 工作目录",
+    "~/.openclaw - 配置和技能",
+    "/etc/important - 系统配置"
+  ],
+  "triggers": [
+    "每天凌晨2点备份workspace目录",
+    "每周日备份整个.openclaw配置",
+    "文件变化时自动备份"
+  ],
+  "real_commands": [
+    "openclaw-flow process \"备份workspace目录到云存储\"",
+    "openclaw-flow process \"每天凌晨2点自动备份\"",
+    "openclaw-flow process \"创建文件备份工作流\""
+  ],
+  "workflow_steps": [
+    {
+      "step": 1,
+      "action": "检查磁盘空间",
+      "skill": "system-monitor",
+      "command": "system-monitor check_disk /",
+      "params": {
+        "threshold": 85
+      },
+      "note": "确保有足够空间进行备份"
+    },
+    {
+      "step": 2,
+      "action": "创建备份目录",
+      "skill": "file-processor",
+      "command": "file-processor create_dir /backups/{{date}}",
+      "params": {
+        "path": "/backups/{{date}}",
+        "recursive": true
+      }
+    },
+    {
+      "step": 3,
+      "action": "压缩workspace目录",
+      "skill": "file-processor",
+      "command": "file-processor compress ~/workspace",
+      "params": {
+        "source": "~/workspace",
+        "target": "/backups/{{date}}/workspace_{{timestamp}}.zip",
+        "exclude": [
+          "node_modules",
+          ".git",
+          "*.log"
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "action": "备份.openclaw配置",
+      "skill": "file-processor",
+      "command": "file-processor copy ~/.openclaw",
+      "params": {
+        "source": "~/.openclaw",
+        "target": "/backups/{{date}}/openclaw_config.tar.gz",
+        "compress": true
+      }
+    },
+    {
+      "step": 5,
+      "action": "上传到云存储",
+      "skill": "cloud-storage",
+      "command": "cloud-storage upload /backups/{{date}}",
+      "params": {
+        "provider": "s3",
+        "bucket": "your-backup-bucket",
+        "local_path": "/backups/{{date}}",
+        "remote_path": "backups/{{date}}"
+      },
+      "note": "需要配置云存储凭证"
+    },
+    {
+      "step": 6,
+      "action": "清理旧备份",
+      "skill": "file-processor",
+      "command": "file-processor cleanup /backups",
+      "params": {
+        "path": "/backups",
+        "keep_days": 30,
+        "pattern": "*.zip,*.tar.gz"
+      }
+    },
+    {
+      "step": 7,
+      "action": "发送备份报告",
+      "skill": "telegram-message",
+      "command": "telegram-message send \"备份完成报告\"",
+      "params": {
+        "message": "✅ 文件备份已完成!\n📅 时间: {{timestamp}}\n💾 大小: {{size}}\n📁 位置: {{location}}",
+        "to": "user"
+      }
+    }
+  ],
+  "installation_requirements": [
+    "文件处理: clawhub install file-processor",
+    "系统监控: clawhub install system-monitor",
+    "通知: clawhub install telegram-message",
+    "云存储: 根据需要安装相应技能"
+  ],
+  "quick_test": "openclaw-flow process \"测试文件备份\" --dry-run",
+  "benefits": [
+    "定时自动备份，无需人工干预",
+    "支持多目标目录备份",
+    "云存储同步，数据更安全",
+    "智能清理，避免磁盘满",
+    "备份报告，随时掌握状态"
+  ]
+}
