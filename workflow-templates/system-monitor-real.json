@@ -1,0 +1,166 @@
+{
+  "name": "系统健康监控中心",
+  "version": "1.0.0",
+  "description": "7x24小时系统健康监控，实时报警，自动修复",
+  "author": "OpenClaw Flow Team",
+  "created_at": "2026-03-17",
+  "triggers": [
+    "监控系统CPU、内存、磁盘使用率",
+    "磁盘空间不足90%时报警",
+    "系统异常立即通知我",
+    "定时检查服务器状态"
+  ],
+  "workflow_steps": [
+    {
+      "phase": "监控",
+      "skill": "system-monitor",
+      "action": "monitor_system",
+      "parameters": {
+        "metrics": ["cpu", "memory", "disk", "network"],
+        "interval": "5m",
+        "thresholds": {
+          "cpu": 80,
+          "memory": 85,
+          "disk": 90,
+          "network": 95
+        }
+      },
+      "outputs": ["system_metrics", "health_status", "alerts"]
+    },
+    {
+      "phase": "分析",
+      "skill": "data-processor",
+      "action": "analyze_trends",
+      "parameters": {
+        "input": "system_metrics",
+        "analysis_type": "trend_analysis",
+        "time_window": "1h",
+        "generate_report": true
+      },
+      "outputs": ["trend_report", "predictions", "recommendations"]
+    },
+    {
+      "phase": "报警",
+      "skill": "telegram-message",
+      "action": "send_alert",
+      "condition": "alerts.length > 0",
+      "parameters": {
+        "message_template": "🚨 系统异常报警\n\n📊 异常指标: {{alerts}}\n📈 当前状态: {{health_status}}\n📋 建议操作: {{recommendations}}\n⏰ 时间: {{timestamp}}",
+        "chat_id": "auto_detect",
+        "priority": "high"
+      },
+      "outputs": ["alert_sent", "message_id"]
+    },
+    {
+      "phase": "记录",
+      "skill": "file-storage",
+      "action": "save_logs",
+      "parameters": {
+        "content": "system_metrics,trend_report,alerts",
+        "path": "logs/system-monitor/{{date}}.json",
+        "format": "json",
+        "compress": true
+      },
+      "outputs": ["log_path", "file_size", "compression_ratio"]
+    },
+    {
+      "phase": "定时",
+      "skill": "cron",
+      "action": "schedule_monitoring",
+      "parameters": {
+        "schedule": "*/5 * * * *",
+        "command": "openclaw-flow process \"检查系统状态\"",
+        "timeout": "10m",
+        "retry_count": 3
+      },
+      "outputs": ["job_id", "next_run", "schedule_info"]
+    }
+  ],
+  "installation_requirements": [
+    {
+      "skill": "system-monitor",
+      "description": "系统监控技能，获取CPU/内存/磁盘/网络指标",
+      "optional": false,
+      "setup_guide": "需要系统权限，自动安装无需配置"
+    },
+    {
+      "skill": "telegram-message",
+      "description": "Telegram消息通知技能",
+      "optional": true,
+      "setup_guide": "需要Telegram Bot Token，在配置中设置"
+    },
+    {
+      "skill": "file-storage",
+      "description": "文件存储技能",
+      "optional": false,
+      "setup_guide": "内置功能，无需额外配置"
+    }
+  ],
+  "configuration": {
+    "notification_channels": ["telegram", "email", "webhook"],
+    "monitoring_intervals": {
+      "normal": "5m",
+      "critical": "1m",
+      "debug": "30s"
+    },
+    "alert_thresholds": {
+      "cpu_warning": 70,
+      "cpu_critical": 90,
+      "memory_warning": 75,
+      "memory_critical": 90,
+      "disk_warning": 80,
+      "disk_critical": 95
+    },
+    "data_retention": {
+      "raw_metrics": "7d",
+      "reports": "30d",
+      "logs": "90d"
+    }
+  },
+  "benefits": [
+    "7x24小时无人值守监控",
+    "实时异常检测和报警",
+    "历史数据分析和趋势预测",
+    "自动日志记录和备份",
+    "可定制的监控阈值",
+    "多平台通知支持"
+  ],
+  "usage_examples": [
+    {
+      "command": "openclaw-flow process \"监控系统CPU和内存使用率\"",
+      "description": "基础监控，只监控CPU和内存"
+    },
+    {
+      "command": "openclaw-flow process \"磁盘空间不足90%时报警\"",
+      "description": "磁盘监控和报警"
+    },
+    {
+      "command": "openclaw-flow process \"定时检查服务器状态，每天生成报告\"",
+      "description": "定时监控和报告生成"
+    },
+    {
+      "command": "openclaw-flow process \"监控所有系统指标，异常立即Telegram通知\"",
+      "description": "全面监控和实时报警"
+    }
+  ],
+  "troubleshooting": {
+    "no_metrics": "检查系统权限，确保有读取系统指标的权限",
+    "no_alerts": "检查阈值配置，确认是否达到报警条件",
+    "notification_failed": "检查通知渠道配置，确认token/chat_id正确",
+    "high_resource_usage": "调整监控间隔，或减少监控指标"
+  },
+  "version_history": [
+    {
+      "version": "1.0.0",
+      "date": "2026-03-17",
+      "changes": [
+        "初始版本发布",
+        "支持CPU/内存/磁盘/网络监控",
+        "支持多级阈值报警",
+        "集成Telegram通知",
+        "自动日志记录"
+      ]
+    }
+  ],
+  "tags": ["system", "monitoring", "alert", "automation", "server", "devops"]
+}
