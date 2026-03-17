@@ -9,7 +9,7 @@
 [![语义匹配](https://img.shields.io/badge/算法-语义匹配2.0-blue)](https://github.com/ly5201314gjx/openclaw-flow)
 [![真实可用](https://img.shields.io/badge/模板-5个实战模板-success)](https://github.com/ly5201314gjx/openclaw-flow)
 
-🔥 **一句话进来，真工作流出门。能跑、可改、不中看不中用不了。**  
+🔥 **一句话进来，真工作流出门——能跑、可改、可复现。**  
 🚀 **意图 → 技能 → 可执行链路，OpenClaw 直接吃。** ✨
 
 [🚀 快速开始](#-快速开始) • [🧠 核心技术](#-核心技术) • [✨ 功能特性](#-功能特性) • [📂 真实案例](#-真实案例) • [🔧 安装部署](#-安装部署) • [⚡ 算法详解](#-算法详解) • [📈 性能指标](#-性能指标) • [🤝 贡献指南](#-贡献指南)
@@ -312,7 +312,8 @@ openclaw-flow process "每小时同步GitHub Issues到Notion"
 
 ## 🚀 **快速开始**
 
-### 📥 **一键安装（推荐）**
+### 📥 **一键装成技能（推荐）**
+> 这就是“装成 OpenClaw 技能”的一键方式。
 ```bash
 # 最简单的方式
 curl -sL https://raw.githubusercontent.com/ly5201314gjx/openclaw-flow/main/install-for-openclaw.sh | bash
@@ -672,3 +673,7 @@ ocess "你的第一句话"
 **🌟 Star ⭐ 这个项目，支持开源自动化未来！**
 
 </div>
+�开源自动化未来！**
+
+</div>
+v>

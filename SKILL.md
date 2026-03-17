@@ -19,7 +19,7 @@ description: >
 Turn natural language into complete automation workflows. One sentence → One workflow → Zero configuration.
 
 ## Overview
-OpenClaw Flow is the ultimate automation assistant that understands what you want and creates complete workflows automatically. No coding, no configuration, just speak or write naturally.
+OpenClaw Flow 把一句话变成**能跑的工作流**。它不是演示用的“概念图”，而是直接把意图拆成技能链，落成可执行流程。少废话，多执行。
 
 ## Features
 - **Natural language understanding** - Just say what you want
@@ -32,10 +32,14 @@ OpenClaw Flow is the ultimate automation assistant that understands what you wan
 
 ## Installation
 ```bash
-# Install the skill
-clawhub install openclaw-flow
+# 一键装成技能（OpenClaw 环境）
+curl -sL https://raw.githubusercontent.com/ly5201314gjx/openclaw-flow/main/install-for-openclaw.sh | bash
 
-# Install recommended dependencies
+# 或者：clawhub install openclaw-flow
+```
+
+## Recommended Skills
+```bash
 clawhub install binance-trading
 clawhub install telegram-message
 clawhub install cron
