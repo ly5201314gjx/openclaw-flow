@@ -41,7 +41,7 @@ openclaw-flow process "收集知乎热榜保存到文件并每天10点Telegram�
 
 ### 立即执行一次
 ```bash
-cd /root/.openclaw/workspace/copilot
+cd ~/.openclaw/workspace/copilot
 node cli.js process "获取知乎当前热榜话题"
 ```
 
@@ -52,7 +52,7 @@ chmod +x zhihu_hot_daily.sh
 ./zhihu_hot_daily.sh
 
 # 或添加到Cron
-0 10 * * * /root/.openclaw/workspace/copilot/zhihu_hot_daily.sh
+0 10 * * * $HOME/.openclaw/workspace/copilot/zhihu_hot_daily.sh  # or set OPENCLAW_FLOW_DIR
 ```
 
 ## 🔍 工作流详情

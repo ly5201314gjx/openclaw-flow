@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync, spawn } = require('child_process');
+const { getOpenClawWorkspace, getCopilotDir } = require('./src/utils/paths');
 
 // ==================== 工作流执行器 ====================
 class WorkflowExecutor {
@@ -106,7 +107,7 @@ class WorkflowExecutor {
           try {
             // 实际创建cron任务
             const cronContent = `# OpenClaw Copilot 定时任务
-${params.schedule} cd /root/.openclaw/workspace && node copilot/workflow-runner.js --workflow ${context.workflowId}`;
+${params.schedule} cd ${getOpenClawWorkspace()} && node copilot/workflow-runner.js --workflow ${context.workflowId}`;
             
             const cronFile = `/tmp/opencopilot_${context.workflowId}.cron`;
             fs.writeFileSync(cronFile, cronContent);
@@ -506,7 +507,7 @@ ${params.schedule} cd /root/.openclaw/workspace && node copilot/workflow-runner.
 class WorkflowRunner {
   constructor() {
     this.executor = new WorkflowExecutor();
-    this.workflowsDir = '/root/.openclaw/workspace/copilot/workflows';
+    this.workflowsDir = path.join(getCopilotDir(), 'workflows');
   }
   
   // 运行指定工作流文件
@@ -631,7 +632,7 @@ async function main() {
       console.log(JSON.stringify(result, null, 2));
       
       // 保存执行结果
-      const resultDir = '/root/.openclaw/workspace/copilot/results';
+      const resultDir = path.join(getCopilotDir(), 'results');
       if (!fs.existsSync(resultDir)) {
         fs.mkdirSync(resultDir, { recursive: true });
       }

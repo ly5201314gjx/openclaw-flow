@@ -126,7 +126,7 @@ async function runAllDemos() {
     console.log('✅ 零配置使用 - 开箱即用');
     
     console.log('\n🎯 立即开始使用：');
-    console.log('   1. cd /root/.openclaw/workspace/copilot');
+    console.log('   1. cd ~/.openclaw/workspace/copilot   (or set OPENCLAW_WORKSPACE/OPENCLAW_FLOW_DIR)');
     console.log('   2. openclaw-flow process "你的第一句话"');
     console.log('   3. 或者运行: node cli.js demo');
     

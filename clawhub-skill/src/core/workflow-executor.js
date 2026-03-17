@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { getCopilotDir } = require('../utils/paths');
 
 class WorkflowExecutor {
   constructor(options = {}) {
@@ -259,7 +260,7 @@ class WorkflowExecutor {
   
   // 保存执行结果
   saveExecutionResult(executionResult) {
-    const resultsDir = '/root/.openclaw/workspace/copilot/execution-results';
+    const resultsDir = path.join(getCopilotDir(), 'execution-results');
     if (!fs.existsSync(resultsDir)) {
       fs.mkdirSync(resultsDir, { recursive: true });
     }

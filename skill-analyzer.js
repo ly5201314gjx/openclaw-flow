@@ -2,15 +2,18 @@
 
 const fs = require('fs');
 const path = require('path');
+const { getOpenClawHome, getOpenClawWorkspace, getCopilotDir } = require('./src/utils/paths');
 const yaml = require('js-yaml');
 
 // 技能目录列表
 const skillDirs = [
-  '/root/.openclaw/extensions',
-  '/root/.openclaw/skills',
-  '/root/.openclaw/workspace/skills',
-  '/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills'
-];
+  path.join(getOpenClawHome(), 'extensions'),
+  path.join(getOpenClawHome(), 'skills'),
+  path.join(getOpenClawWorkspace(), 'skills'),
+  // global openclaw install (best-effort; optional)
+  process.env.OPENCLAW_SKILLS_DIR,
+].filter(Boolean);
+
 
 // 技能能力分类
 const capabilityCategories = {
@@ -154,7 +157,7 @@ async function main() {
   });
   
   // 保存分析结果
-  const outputDir = '/root/.openclaw/workspace/copilot';
+  const outputDir = getCopilotDir();
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
@@ -165,6 +168,9 @@ async function main() {
   );
   
   console.log(`\n✅ 分析完成！结果已保存到: ${path.join(outputDir, 'skill-analysis.json')}`);
+}
+
+main().catch(console.error);log(`\n✅ 分析完成！结果已保存到: ${path.join(outputDir, 'skill-analysis.json')}`);
 }
 
 main().catch(console.error);

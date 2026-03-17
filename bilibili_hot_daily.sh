@@ -3,7 +3,7 @@
 # 自动生成 by OpenClaw Flow
 
 echo "📺 开始哔哩哔哩热榜收集 $(date)"
-cd /root/.openclaw/workspace/copilot
+cd "$HOME/.openclaw/workspace/copilot"  # or export OPENCLAW_FLOW_DIR
 
 # 使用OpenClaw Flow执行
 echo "🚀 通过OpenClaw Flow执行B站热榜收集..."

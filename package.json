@@ -12,7 +12,7 @@
   ],
   "main": "index.js",
   "bin": {
-    "openclaw-copilot": "./cli.js"
+    "openclaw-flow": "./cli.js"
   },
   "scripts": {
     "start": "node cli.js",
@@ -25,12 +25,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openclaw/openclaw-copilot"
+    "url": "https://github.com/ly5201314gjx/openclaw-flow"
   },
   "bugs": {
-    "url": "https://github.com/openclaw/openclaw-copilot/issues"
+    "url": "https://github.com/ly5201314gjx/openclaw-flow/issues"
   },
-  "homepage": "https://openclaw.ai/copilot",
+  "homepage": "https://github.com/ly5201314gjx/openclaw-flow",
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^11.1.0",

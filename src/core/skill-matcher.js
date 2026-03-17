@@ -140,6 +140,15 @@ class SkillMatcher {
     return availableSkills.includes(skill);
   }
 
+  // 获取可用技能列表（用于 status/可视化）
+  getAvailableSkills() {
+    // Keep it simple: union of known skills in mappings.
+    const set = new Set();
+    Object.values(this.capabilityToSkills).forEach(list => list.forEach(s => set.add(s)));
+    Object.values(this.platformToSkills).forEach(list => list.forEach(s => set.add(s)));
+    return Array.from(set).sort();
+  }
+
   // 获取技能描述
   getSkillDescription(skill) {
     const descriptions = {

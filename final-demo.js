@@ -181,7 +181,7 @@ async function runFinalDemo() {
   console.log('\n🎉 Step 5: 演示完成！');
   console.log('────────────────────────────────────');
   
-  const configDir = '/root/.openclaw/workspace/copilot/demo-config';
+  const configDir = path.join(getCopilotDir(), 'demo-config');
   if (!fs.existsSync(configDir)) {
     fs.mkdirSync(configDir, { recursive: true });
   }
@@ -191,7 +191,7 @@ async function runFinalDemo() {
     workflow,
     generated_at: new Date().toISOString(),
     files_created: [
-      '/root/.openclaw/workspace/copilot/monitors/*.json',
+      path.join(getCopilotDir(), 'monitors', '*.json'),
       '/tmp/copilot_*.cron'
     ],
     next_steps: [
@@ -233,6 +233,9 @@ if (require.main === module) {
 }
 
 module.exports = {
+  ImprovedIntentParser,
+  runFinalDemo
+};e.exports = {
   ImprovedIntentParser,
   runFinalDemo
 };

@@ -22,8 +22,8 @@
 gh auth login
 
 # 3. 创建仓库（自动设置远程并推送）
-cd /root/.openclaw/workspace/copilot
-gh repo create openclaw/openclaw-flow --public --source=. --remote=origin --push
+cd ~/.openclaw/workspace/copilot
+gh repo create ly5201314gjx/openclaw-flow --public --source=. --remote=origin --push
 
 # 4. 创建发布版本
 gh release create v0.1.0 --title "OpenClaw Flow v0.1.0" --notes "Your First Sentence, My Full Workflow"
@@ -36,7 +36,7 @@ open https://github.com/openclaw/openclaw-flow
 
 ```bash
 # 切换到项目目录
-cd /root/.openclaw/workspace/copilot
+cd ~/.openclaw/workspace/copilot
 
 # 步骤1：在GitHub创建仓库
 # 访问 https://github.com/new
@@ -202,7 +202,7 @@ npm login
 # 邮箱: team@openclaw.ai
 
 # 2. 发布包
-cd /root/.openclaw/workspace/copilot
+cd ~/.openclaw/workspace/copilot
 npm publish --access public
 
 # 3. 验证发布

@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync, spawn } = require('child_process');
+const { getOpenClawHome, getOpenClawWorkspace, getCopilotDir } = require('./src/utils/paths');
 
 // ==================== 工具调用代理 ====================
 class ToolProxy {
@@ -21,7 +22,7 @@ class ToolProxy {
       // 这里先用模拟
       
       // 检查Telegram是否配置
-      const configPath = '/root/.openclaw/config.json';
+      const configPath = path.join(getOpenClawHome(), 'config.json');
       if (fs.existsSync(configPath)) {
         const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
         if (config.channels?.telegram) {
@@ -99,7 +100,7 @@ ${schedule} ${command}
     
     try {
       // 检查币安技能是否存在
-      const skillPath = '/root/.openclaw/workspace/skills/binance-trading';
+      const skillPath = path.join(getOpenClawWorkspace(), 'skills', 'binance-trading');
       if (!fs.existsSync(skillPath)) {
         throw new Error('币安交易技能未安装');
       }
@@ -113,7 +114,7 @@ ${schedule} ${command}
       };
       
       // 保存监控配置
-      const monitorDir = '/root/.openclaw/workspace/copilot/monitors';
+      const monitorDir = path.join(getCopilotDir(), 'monitors');
       if (!fs.existsSync(monitorDir)) {
         fs.mkdirSync(monitorDir, { recursive: true });
       }
@@ -160,7 +161,7 @@ ${schedule} ${command}
       }));
       
       // 保存数据
-      const dataDir = '/root/.openclaw/workspace/copilot/data';
+      const dataDir = path.join(getCopilotDir(), 'data');
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }
@@ -304,7 +305,7 @@ class RealSkillAdapter {
           
           // 构建工作流执行命令
           const workflowId = context.workflowId || `wf_${Date.now()}`;
-          const command = `cd /root/.openclaw/workspace && node copilot/workflow-runner.js --id ${workflowId}`;
+          const command = `cd ${getOpenClawWorkspace()} && node copilot/workflow-runner.js --id ${workflowId}`;
           
           const result = await this.tools.createCronJob(
             params.schedule,
@@ -514,4 +515,5 @@ module.exports = {
   ToolProxy,
   createIntegratedWorkflowExecutor,
   testRealIntegration
-};
+};tegration
+};};

@@ -222,7 +222,7 @@ class OpenClawCopilot {
   
   // 保存完整结果
   saveCompleteResult(result) {
-    const resultsDir = '/root/.openclaw/workspace/copilot/execution-results';
+    const resultsDir = path.join(getCopilotDir(), 'execution-results');
     if (!fs.existsSync(resultsDir)) {
       fs.mkdirSync(resultsDir, { recursive: true });
     }
@@ -237,7 +237,7 @@ class OpenClawCopilot {
   
   // 保存错误结果
   saveErrorResult(result) {
-    const errorsDir = '/root/.openclaw/workspace/copilot/errors';
+    const errorsDir = path.join(getCopilotDir(), 'errors');
     if (!fs.existsSync(errorsDir)) {
       fs.mkdirSync(errorsDir, { recursive: true });
     }
@@ -362,6 +362,11 @@ async function main() {
 // 执行主程序
 if (require.main === module) {
   main().catch(console.error);
+}
+
+module.exports = {
+  OpenClawCopilot
+};tch(console.error);
 }
 
 module.exports = {

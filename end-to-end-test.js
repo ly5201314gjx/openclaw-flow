@@ -88,7 +88,8 @@ async function testEndToEnd(userInput) {
     duration_ms: duration
   };
   
-  const resultsDir = '/root/.openclaw/workspace/copilot/e2e-results';
+  const { getCopilotDir } = require('./src/utils/paths');
+  const resultsDir = path.join(getCopilotDir(), 'e2e-results');
   if (!fs.existsSync(resultsDir)) {
     fs.mkdirSync(resultsDir, { recursive: true });
   }
@@ -248,7 +249,7 @@ function generateTestReport(results) {
     }))
   };
   
-  const reportDir = '/root/.openclaw/workspace/copilot/reports';
+  const reportDir = path.join(getCopilotDir(), 'reports');
   if (!fs.existsSync(reportDir)) {
     fs.mkdirSync(reportDir, { recursive: true });
   }

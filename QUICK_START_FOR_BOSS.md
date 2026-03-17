@@ -6,14 +6,14 @@
 https://github.com/ly5201314gjx/openclaw-flow
 
 ### 📦 安装位置
-当前目录：`/root/.openclaw/workspace/copilot/`
+当前目录：`~/.openclaw/workspace/copilot/`
 技能目录：`~/.openclaw/skills/openclaw-flow/`（克隆中）
 
 ## 🎯 立即开始使用
 
 ### 方法1：从当前目录使用（最快）
 ```bash
-cd /root/.openclaw/workspace/copilot
+cd ~/.openclaw/workspace/copilot
 npm link  # 如果还没链接
 openclaw-flow demo
 openclaw-flow process "你的第一句话"
@@ -74,7 +74,7 @@ openclaw-flow "Check server status every 5 minutes"
 
 运行这个看到完整功能：
 ```bash
-cd /root/.openclaw/workspace/copilot
+cd ~/.openclaw/workspace/copilot
 node cli.js demo
 ```
 
@@ -165,7 +165,7 @@ openclaw-flow process "检查BTC当前价格"
 ## 📞 支持
 
 - **GitHub Issues**: 问题反馈和功能请求
-- **当前目录**: `/root/.openclaw/workspace/copilot/`
+- **当前目录**: `~/.openclaw/workspace/copilot/`
 - **立即帮助**: 运行 `openclaw-flow --help`
 
 ---
@@ -176,7 +176,7 @@ openclaw-flow process "检查BTC当前价格"
 
 **立即尝试：**
 ```bash
-cd /root/.openclaw/workspace/copilot
+cd ~/.openclaw/workspace/copilot
 node cli.js process "监控WLD价格，跌5%就提醒我"
 ```
 
