@@ -437,7 +437,8 @@ async function main() {
     console.log(JSON.stringify(workflow, null, 2));
     
     // 保存工作流文件
-    const outputDir = '/root/.openclaw/workspace/copilot/workflows';
+    const { getCopilotDir } = require('./src/utils/paths');
+    const outputDir = path.join(getCopilotDir(), 'workflows');
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }

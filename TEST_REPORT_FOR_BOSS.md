@@ -139,7 +139,7 @@
 
 - **GitHub仓库**: https://github.com/ly5201314gjx/openclaw-flow
 - **立即使用**: `openclaw-flow process "你的第一句话"`
-- **项目目录**: `/root/.openclaw/workspace/copilot/`
+- **项目目录**: `~/.openclaw/workspace/copilot/`
 
 ## 🎯 下一步建议
 

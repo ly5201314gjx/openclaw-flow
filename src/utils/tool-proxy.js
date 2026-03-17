@@ -13,7 +13,7 @@ class ToolProxy {
   
   loadConfig() {
     const configPaths = [
-      '/root/.openclaw/config.json',
+      require('./paths').getOpenClawHome() + '/config.json',
       path.join(process.env.HOME, '.openclaw/config.json'),
       './config.json'
     ];

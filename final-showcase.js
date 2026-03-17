@@ -107,7 +107,7 @@ console.log('   ✅ 一句话完成自动化配置！');
 // 5. 展示文件生成
 console.log('\n💾 5. 生成的文件:');
 const generatedFiles = [
-  '/root/.openclaw/workspace/copilot/',
+  getCopilotDir(),
   '  ├── execution-results/         # 执行结果',
   '  ├── data/                      # 数据文件',
   '  ├── monitors/                  # 监控配置',
@@ -211,7 +211,8 @@ const manifest = {
   ]
 };
 
-const manifestFile = '/root/.openclaw/workspace/copilot/PROJECT_MANIFEST.json';
+const { getCopilotDir } = require('./src/utils/paths');
+const manifestFile = path.join(getCopilotDir(), 'PROJECT_MANIFEST.json');
 fs.writeFileSync(manifestFile, JSON.stringify(manifest, null, 2));
 
 console.log(`\n📋 项目清单保存到: ${manifestFile}`);

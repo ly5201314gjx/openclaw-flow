@@ -66,7 +66,7 @@ async function demonstrateZhihuWorkflow() {
   console.log('   openclaw-flow process "知乎热榜"');
   console.log('');
   console.log('   # 方案B：手动创建Cron任务');
-  console.log('   0 10 * * * cd /root/.openclaw/workspace/copilot && node cli.js process "知乎热榜"');
+  console.log('   0 10 * * * cd ~/.openclaw/workspace/copilot && node cli.js process "知乎热榜"');
   console.log('');
   console.log('   # 方案C：使用生成的工作流文件');
   console.log(`   ls -la workflows/zhihu_hot*.json`);
@@ -109,7 +109,7 @@ demonstrateZhihuWorkflow().catch(error => {
   console.log('   ls -la src/core/');
   console.log('');
   console.log('   # 测试自然语言解析');
-  console.log('   cd /root/.openclaw/workspace/copilot');
+  console.log('   cd ~/.openclaw/workspace/copilot');
   console.log('   node -e "const p = require(\'./src/core/intent-parser\'); console.log(new p().parse(\'知乎热榜\'))"');
 });
 

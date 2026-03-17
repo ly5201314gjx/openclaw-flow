@@ -97,7 +97,7 @@ try {
 
 // 5. 生成演示命令
 console.log('\n🎯 5. 安装后使用命令:');
-console.log('   cd /root/.openclaw/workspace/copilot');
+console.log('   cd ~/.openclaw/workspace/copilot   (or set OPENCLAW_WORKSPACE/OPENCLAW_FLOW_DIR)');
 console.log('   npm install commander');
 console.log('   npm link');
 console.log('   openclaw-flow demo');

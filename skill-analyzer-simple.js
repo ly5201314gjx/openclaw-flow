@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { getOpenClawHome, getOpenClawWorkspace, getCopilotDir } = require('./src/utils/paths');
 
 // 技能能力分类
 const capabilityCategories = {
@@ -19,10 +20,12 @@ const capabilityCategories = {
 
 async function findSkillFiles() {
   const skillDirs = [
-    '/root/.openclaw/workspace/skills',
-    '/root/.openclaw/skills',
-    '/root/.openclaw/extensions'
-  ];
+    path.join(getOpenClawWorkspace(), 'skills'),
+    path.join(getOpenClawHome(), 'skills'),
+    path.join(getOpenClawHome(), 'extensions'),
+    process.env.OPENCLAW_SKILLS_DIR,
+  ].filter(Boolean);
+
   
   const skillFiles = [];
   
@@ -153,7 +156,7 @@ async function main() {
   });
   
   // 保存分析结果
-  const outputDir = '/root/.openclaw/workspace/copilot';
+  const outputDir = getCopilotDir();
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }

@@ -60,7 +60,8 @@ function fixWorkflowFile(filepath) {
 
 // 主程序
 async function main() {
-  const workflowsDir = '/root/.openclaw/workspace/copilot/workflows';
+  const { getCopilotDir } = require('./src/utils/paths');
+  const workflowsDir = path.join(getCopilotDir(), 'workflows');
   
   if (!fs.existsSync(workflowsDir)) {
     console.error('工作流目录不存在');

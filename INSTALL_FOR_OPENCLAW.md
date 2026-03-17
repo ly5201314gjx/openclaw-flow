@@ -34,7 +34,7 @@ openclaw-flow demo
 
 ```bash
 # 进入项目目录
-cd /root/.openclaw/workspace/copilot
+cd ~/.openclaw/workspace/copilot
 
 # 全局链接
 npm link

@@ -6,6 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { getOpenClawHome, getOpenClawWorkspace, getCopilotDir } = require('../utils/paths');
 
 class RealSkillAdapter {
   constructor() {
@@ -47,7 +48,7 @@ class RealSkillAdapter {
     
     try {
       // 检查技能是否安装
-      const skillPath = '/root/.openclaw/workspace/skills/binance-trading';
+      const skillPath = path.join(getOpenClawWorkspace(), 'skills', 'binance-trading');
       if (!fs.existsSync(skillPath)) {
         throw new Error('币安交易技能未安装，请运行: clawhub install binance-trading');
       }
@@ -61,7 +62,7 @@ class RealSkillAdapter {
       };
       
       // 保存配置
-      const monitorDir = '/root/.openclaw/workspace/copilot/monitors';
+      const monitorDir = path.join(getCopilotDir(), 'monitors');
       if (!fs.existsSync(monitorDir)) {
         fs.mkdirSync(monitorDir, { recursive: true });
       }
@@ -118,7 +119,7 @@ class RealSkillAdapter {
       const message = params.message || '系统提醒';
       
       // 检查Telegram配置
-      const configPath = '/root/.openclaw/config.json';
+      const configPath = path.join(getOpenClawHome(), 'config.json');
       if (fs.existsSync(configPath)) {
         const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
         if (!config.channels?.telegram) {
@@ -172,7 +173,7 @@ class RealSkillAdapter {
       const workflowName = context.workflow?.name || '未命名工作流';
       
       // 构建工作流执行命令
-      const command = `cd /root/.openclaw/workspace && node copilot/scripts/run-workflow.js --id ${context.workflowId || cronId}`;
+      const command = `cd ${getOpenClawWorkspace()} && node copilot/scripts/run-workflow.js --id ${context.workflowId || cronId}`;
       
       const cronContent = `# OpenClaw Copilot 定时任务
 # 工作流: ${workflowName}
@@ -245,7 +246,7 @@ ${params.schedule} ${command}
       }));
       
       // 保存数据
-      const dataDir = '/root/.openclaw/workspace/copilot/data';
+      const dataDir = path.join(getCopilotDir(), 'data');
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
       }

@@ -14,21 +14,12 @@ let commander;
 try {
   commander = require('commander');
 } catch (error) {
-  console.log('📦 Installing dependencies...');
-  const { execSync } = require('child_process');
-  
-  try {
-    execSync('npm install commander chalk inquirer ora figlet --no-save', { 
-      stdio: 'inherit',
-      cwd: __dirname 
-    });
-    commander = require('commander');
-  } catch (installError) {
-    console.error('❌ Failed to install dependencies. Please run:');
-    console.error('   npm install commander chalk inquirer ora figlet');
-    console.error('   Or use: ./setup.sh');
-    process.exit(1);
-  }
+  console.error('❌ Missing dependencies. Please run:');
+  console.error('   npm install');
+  console.error('');
+  console.error('Or (one-time) install globally:');
+  console.error('   npm install -g openclaw-flow');
+  process.exit(1);
 }
 
 // Load package info
