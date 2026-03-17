@@ -1,7 +1,7 @@
 {
   "name": "openclaw-flow",
   "version": "0.1.0",
-  "description": "OpenClaw Flow - Your First Sentence, My Full Workflow. Turn natural language into complete OpenClaw automation.",
+  "description": "OpenClaw Flow - One sentence to a real workflow. Maps intent → skills → runnable automation (OpenClaw-ready).",
   "keywords": [
     "openclaw",
     "copilot",

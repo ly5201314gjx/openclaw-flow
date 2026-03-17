@@ -1,12 +1,12 @@
 ---
 name: openclaw-flow
 description: >
-  Your First Sentence, My Full Workflow.
-  Turn natural language into complete automation workflows.
-  One sentence → One workflow → Zero configuration.
+  One sentence to a real workflow.
+  Turn natural language into OpenClaw-ready automation chains.
+  Intent → skills → runnable flow (with defaults you can edit).
   Use when: (1) user wants to automate tasks with natural language,
-  (2) needs to create complex workflows quickly,
-  (3) wants zero-configuration automation.
+  (2) needs multi-skill workflows fast,
+  (3) wants zero-to-one automation without manual wiring.
   Triggers: "帮我自动化", "创建工作流", "监控价格", "定时提醒",
   "openclaw flow", "natural language workflow", "automate with words".
 ---
