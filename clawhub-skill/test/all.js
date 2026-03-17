@@ -88,7 +88,7 @@ class TestSuite {
     
     // 保存详细报告
     const { getCopilotDir } = require('../src/utils/paths');
-  const reportDir = path.join(getCopilotDir(), 'test-reports');
+    const reportDir = path.join(getCopilotDir(), 'test-reports');
     if (!fs.existsSync(reportDir)) {
       fs.mkdirSync(reportDir, { recursive: true });
     }
